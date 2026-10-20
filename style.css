@@ -7,7 +7,6 @@
   --line: #303030;
   --accent: #d9ff43;
 }
-
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
@@ -55,7 +54,6 @@ nav a:hover, footer a:hover { color: var(--accent); }
 .hero-image img { width: 100%; height: 100%; object-fit: cover; position: absolute; }
 .hero-fallback { font-size: 44px; font-weight: 900; text-align: center; letter-spacing: -2px; }
 .hero-fallback span { font-size: 10px; color: var(--accent); letter-spacing: 4px; }
-
 .ticker {
   display: flex; justify-content: space-around; align-items: center; gap: 15px;
   flex-wrap: wrap; padding: 19px 5%; background: var(--accent); color: #111;
@@ -71,7 +69,6 @@ h2 { font-size: clamp(28px, 4vw, 43px); letter-spacing: -1.8px; margin: 10px 0 0
   padding: 10px 15px; font-size: 10px; font-weight: 800;
 }
 .filter.active, .filter:hover { background: var(--accent); color: #111; border-color: var(--accent); }
-
 .product-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px 14px; }
 .product-card { min-width: 0; }
 .product-image {
@@ -95,7 +92,6 @@ h2 { font-size: clamp(28px, 4vw, 43px); letter-spacing: -1.8px; margin: 10px 0 0
   padding: 8px 10px; font-size: 10px; font-weight: 800;
 }
 .add-button:hover { color: #111; background: var(--accent); border-color: var(--accent); }
-
 .feature {
   padding: 48px 6%; background: #202020; display: flex;
   justify-content: space-between; align-items: center; gap: 30px;
@@ -107,7 +103,6 @@ footer {
   border-top: 1px solid var(--line);
 }
 footer p { color: var(--muted); font-size: 10px; max-width: 350px; line-height: 1.6; }
-
 .cart-overlay {
   position: fixed; inset: 0; background: #0009; z-index: 9; display: none;
 }
@@ -134,7 +129,6 @@ footer p { color: var(--muted); font-size: 10px; max-width: 350px; line-height: 
 .cart-footer { padding-top: 18px; border-top: 1px solid var(--line); }
 .full-width { width: 100%; text-align: center; }
 .empty-cart { color: var(--muted); font-size: 13px; padding: 25px 0; }
-
 @media (max-width: 900px) {
   .product-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   nav { gap: 13px; }
