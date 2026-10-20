@@ -17,10 +17,6 @@ button, input {
   font: inherit;
 }
 
-button, a {
-  -webkit-tap-highlight-color: transparent;
-}
-
 button {
   cursor: pointer;
 }
@@ -84,11 +80,8 @@ nav a:hover {
   padding: 65px 7%;
   background:
     linear-gradient(90deg, #050505 15%, #050505bd 65%, #05050545),
-    url("images/tracksuit-black.jpg") center 40% / cover;
-}
-
-.hero-content {
-  max-width: 550px;
+    url("https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=1600&q=80")
+    center 40% / cover;
 }
 
 .eyebrow {
@@ -247,7 +240,6 @@ footer .logo {
   padding: 23px;
   background: #111;
   border-left: 1px solid #444;
-  box-shadow: -10px 0 35px #0007;
 }
 
 .cart-panel.open {
