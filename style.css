@@ -1,0 +1,302 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #f7f7f5;
+  color: #171717;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar {
+  background: #101010;
+  color: white;
+  padding: 20px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+  color: white;
+  text-decoration: none;
+  font-size: 27px;
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: -1.5px;
+}
+
+nav {
+  display: flex;
+  gap: 26px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+nav a:hover {
+  color: #d7ff3f;
+}
+
+.cart-button {
+  background: #d7ff3f;
+  color: #111;
+  border: none;
+  padding: 11px 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.hero {
+  min-height: 430px;
+  padding: 80px 8%;
+  background: #171717;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 20px;
+}
+
+.tag {
+  color: #d7ff3f;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+.hero h1 {
+  font-size: clamp(55px, 9vw, 100px);
+  line-height: .92;
+  letter-spacing: -4px;
+}
+
+.hero h1 span {
+  color: #d7ff3f;
+}
+
+.hero > p:not(.tag) {
+  color: #ccc;
+}
+
+.button {
+  display: inline-block;
+  background: #d7ff3f;
+  color: #111;
+  padding: 15px 23px;
+  font-size: 13px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.shop {
+  padding: 75px 7%;
+}
+
+.dark {
+  color: #666;
+}
+
+.shop h2 {
+  font-size: 42px;
+  margin-top: 12px;
+}
+
+.shop h2 span {
+  color: #8cae00;
+}
+
+.subtitle {
+  color: #777;
+  margin: 12px 0 35px;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px 20px;
+}
+
+.product {
+  background: white;
+  overflow: hidden;
+}
+
+.product img {
+  width: 100%;
+  height: 310px;
+  object-fit: cover;
+  display: block;
+  background: #e8e8e8;
+  transition: transform .3s;
+}
+
+.product:hover img {
+  transform: scale(1.04);
+}
+
+.product-info {
+  padding: 17px;
+  position: relative;
+  background: white;
+}
+
+.category {
+  font-size: 10px;
+  color: #777;
+  letter-spacing: 2px;
+  margin-bottom: 9px;
+}
+
+.product h3 {
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+
+.price {
+  font-weight: bold;
+  margin-bottom: 17px;
+}
+
+.product button,
+.checkout-button {
+  width: 100%;
+  border: none;
+  padding: 14px;
+  background: #111;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.product button:hover,
+.checkout-button:hover {
+  background: #d7ff3f;
+  color: #111;
+}
+
+.about {
+  padding: 85px 20px;
+  background: #171717;
+  color: white;
+  text-align: center;
+}
+
+.about h2 {
+  font-size: clamp(35px, 6vw, 60px);
+  margin: 20px 0;
+}
+
+.about > p:last-child {
+  color: #ccc;
+  line-height: 1.8;
+}
+
+.checkout {
+  max-width: 760px;
+  margin: 60px auto;
+  padding: 30px;
+  background: white;
+}
+
+.checkout h2 {
+  margin-bottom: 22px;
+}
+
+.checkout h3 {
+  margin: 22px 0;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 12px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.cart-item button {
+  padding: 7px 10px;
+  cursor: pointer;
+}
+
+.note {
+  color: #777;
+  font-size: 12px;
+  margin-top: 14px;
+}
+
+footer {
+  background: #101010;
+  color: #ccc;
+  text-align: center;
+  padding: 35px 20px;
+  line-height: 2.2;
+}
+
+@media (max-width: 800px) {
+  .products {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .product img {
+    height: 260px;
+  }
+
+  .navbar {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 520px) {
+  .navbar {
+    padding: 18px 5%;
+  }
+
+  nav {
+    width: 100%;
+    justify-content: center;
+    order: 3;
+  }
+
+  .hero {
+    padding: 65px 6%;
+  }
+
+  .shop {
+    padding: 50px 5%;
+  }
+
+  .products {
+    gap: 12px;
+  }
+
+  .product img {
+    height: 190px;
+  }
+
+  .product-info {
+    padding: 10px;
+  }
+
+  .product h3 {
+    font-size: 14px;
+  }
+
+  .checkout {
+    margin: 30px 12px;
+    padding: 20px;
+  }
+}
