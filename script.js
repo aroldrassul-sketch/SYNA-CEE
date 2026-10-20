@@ -1,66 +1,67 @@
-const products = [
-  {id:1,name:"SYNA Logo Hoodie — Black",cat:"Clothing",price:59.99,img:"https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=800&q=85"},
-  {id:2,name:"Oversized Hoodie — Grey",cat:"Clothing",price:59.99,img:"https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=800&q=85"},
-  {id:3,name:"Tech Fleece Hoodie",cat:"Clothing",price:79.99,img:"https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=800&q=85"},
-  {id:4,name:"Tech Fleece Sweatpants",cat:"Clothing",price:59.99,img:"https://images.unsplash.com/photo-1552902865-b72c031ac5ea?auto=format&fit=crop&w=800&q=85"},
-  {id:5,name:"Black Tracksuit",cat:"Clothing",price:149.99,img:"https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=800&q=85"},
-  {id:6,name:"Grey Tracksuit",cat:"Clothing",price:129.99,img:"https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=800&q=85"},
-  {id:7,name:"Green Tracksuit",cat:"Clothing",price:129.99,img:"https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=800&q=85"},
-  {id:8,name:"Blue Tracksuit",cat:"Clothing",price:129.99,img:"https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=800&q=85"},
-  {id:9,name:"Black Graphic T-Shirt",cat:"Clothing",price:34.99,img:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=85"},
-  {id:10,name:"White Essential T-Shirt",cat:"Clothing",price:29.99,img:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=85"},
-  {id:11,name:"Black Puffer Jacket",cat:"Clothing",price:119.99,img:"https://images.unsplash.com/photo-1544923246-77307dd654cb?auto=format&fit=crop&w=800&q=85"},
-  {id:12,name:"Blue Puffer Jacket",cat:"Clothing",price:119.99,img:"https://images.unsplash.com/photo-1544923246-77307dd654cb?auto=format&fit=crop&w=800&q=85"},
-  {id:13,name:"Track Jacket",cat:"Clothing",price:69.99,img:"https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=800&q=85"},
-  {id:14,name:"Cargo Pants",cat:"Clothing",price:54.99,img:"https://images.unsplash.com/photo-1517445312882-bc9910d016b7?auto=format&fit=crop&w=800&q=85"},
-  {id:15,name:"Black Shorts",cat:"Clothing",price:39.99,img:"https://images.unsplash.com/photo-1503341504253-dff4815485f1?auto=format&fit=crop&w=800&q=85"},
-  {id:16,name:"Black Streetwear Cap",cat:"Clothing",price:24.99,img:"https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=800&q=85"},
-  {id:17,name:"Grey Beanie",cat:"Clothing",price:19.99,img:"https://images.unsplash.com/photo-1576871337622-98d48d1cf531?auto=format&fit=crop&w=800&q=85"},
-  {id:18,name:"Black Skull Cap",cat:"Clothing",price:19.99,img:"https://images.unsplash.com/photo-1576871337622-98d48d1cf531?auto=format&fit=crop&w=800&q=85"},
-  {id:19,name:"Air Max 95 Style — Black",cat:"Shoes",price:119.99,img:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=85"},
-  {id:20,name:"Air Max 95 Style — Grey",cat:"Shoes",price:124.99,img:"https://images.unsplash.com/photo-1495555961986-6d4c1ecb7be3?auto=format&fit=crop&w=800&q=85"},
-  {id:21,name:"Air Max 95 Style — Clay",cat:"Shoes",price:129.99,img:"https://images.unsplash.com/photo-1460353581641-37baddab0fa2?auto=format&fit=crop&w=800&q=85"},
-  {id:22,name:"Air Force Style — Black",cat:"Shoes",price:99.99,img:"https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=800&q=85"},
-  {id:23,name:"Air Force Style — White",cat:"Shoes",price:89.99,img:"https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=800&q=85"},
-  {id:24,name:"Air Force Style — Red",cat:"Shoes",price:99.99,img:"https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=800&q=85"},
-  {id:25,name:"Air Max 95 Style — Neon",cat:"Shoes",price:119.99,img:"https://images.unsplash.com/photo-1539185441755-769473a23570?auto=format&fit=crop&w=800&q=85"}
+ const products = [
+  { id: 1, name: "SYNA OG Tracksuit — Grey", category: "tracksuits", price: 180, image: "syna-grey.jpg", tag: "POPULAR" },
+  { id: 2, name: "SYNA Logo Tracksuit — Black", category: "tracksuits", price: 180, image: "syna-black.jpg", tag: "ESSENTIAL" },
+  { id: 3, name: "SYNA Tracksuit — Blue", category: "tracksuits", price: 180, image: "syna-blue.jpg" },
+  { id: 4, name: "SYNA Tracksuit — Brown", category: "tracksuits", price: 185, image: "syna-brown.jpg" },
+  { id: 5, name: "Nike x SYNA Tech Fleece — Black/Bronze", category: "tracksuits", price: 230, image: "syna-tech-fleece.jpg", tag: "COLLAB STYLE" },
+  { id: 6, name: "SYNA Tracksuit — Red", category: "tracksuits", price: 180, image: "syna-red.jpg" },
+  { id: 7, name: "Nike Tech Fleece — Black", category: "tracksuits", price: 150, image: "tech-fleece.jpg" },
+  { id: 8, name: "SYNA Hoodie — Grey", category: "clothing", price: 90, image: "syna-hoodie-grey.jpg" },
+  { id: 9, name: "SYNA Logo Hoodie — Black", category: "clothing", price: 90, image: "syna-hoodie-black.jpg" },
+  { id: 10, name: "SYNA Graphic T-Shirt", category: "clothing", price: 55, image: "syna-tee.jpg" },
+  { id: 11, name: "SYNA Puffer Jacket", category: "clothing", price: 200, image: "syna-puffer.jpg" },
+  { id: 12, name: "SYNA Joggers — Black", category: "clothing", price: 75, image: "syna-joggers.jpg" },
+  { id: 13, name: "Nike Air Max Plus TN — Triple Black", category: "sneakers", price: 190, image: "tn-black.jpg", tag: "TN" },
+  { id: 14, name: "Nike Air Max Plus TN — Black/Blue", category: "sneakers", price: 190, image: "tn-blue.jpg" },
+  { id: 15, name: "Nike Air Max Plus TN — White", category: "sneakers", price: 185, image: "tn-white.jpg" },
+  { id: 16, name: "Nike Air Max 95 — Neon", category: "sneakers", price: 190, image: "air-max-95-neon.jpg" },
+  { id: 17, name: "SYNA x Nike Air Max 95 — Black", category: "sneakers", price: 350, image: "syna-air-max-95.jpg", tag: "COLLAB STYLE" },
+  { id: 18, name: "Air Jordan 4 Retro — Black Cat", category: "sneakers", price: 250, image: "jordan-4-black-cat.jpg" },
+  { id: 19, name: "Air Jordan 4 Retro — Military Blue", category: "sneakers", price: 220, image: "jordan-4-blue.jpg" },
+  { id: 20, name: "Air Jordan 4 Retro — White Cement", category: "sneakers", price: 230, image: "jordan-4-white.jpg" },
+  { id: 21, name: "Nike Air Force 1 — White", category: "sneakers", price: 120, image: "air-force-white.jpg" },
+  { id: 22, name: "Nike Air Force 1 — Black", category: "sneakers", price: 120, image: "air-force-black.jpg" },
+  { id: 23, name: "SYNA Trucker Cap", category: "accessories", price: 40, image: "syna-cap.jpg" },
+  { id: 24, name: "SYNA Beanie", category: "accessories", price: 35, image: "syna-beanie.jpg" },
+  { id: 25, name: "SYNA Shoulder Bag", category: "accessories", price: 50, image: "syna-bag.jpg" }
 ];
 
-let activeFilter = "All";
+const grid = document.getElementById("product-grid");
+const cartPanel = document.getElementById("cart-panel");
+const cartOverlay = document.getElementById("cart-overlay");
+const cartCount = document.getElementById("cart-count");
+const cartItems = document.getElementById("cart-items");
+const cartTotal = document.getElementById("cart-total");
+
 let cart = [];
+let currentFilter = "all";
 
-function setFilter(category) {
-  activeFilter = category;
-
-  document.querySelectorAll(".filter").forEach(button => {
-    button.classList.toggle("active", button.dataset.filter === category);
-  });
-
-  renderProducts();
-}
+const euro = value => new Intl.NumberFormat("en-IE", {
+  style: "currency", currency: "EUR"
+}).format(value);
 
 function renderProducts() {
-  const search = document.getElementById("search").value.toLowerCase();
-
-  const filtered = products.filter(product =>
-    (activeFilter === "All" || product.cat === activeFilter) &&
-    product.name.toLowerCase().includes(search)
+  const visible = products.filter(product =>
+    currentFilter === "all" || product.category === currentFilter
   );
 
-  document.getElementById("products").innerHTML = filtered.map(product => `
-    <article class="product">
-      <img class="product-image"
-        src="${product.img}"
-        alt="${product.name}"
-        loading="lazy"
-        onerror="this.onerror=null;this.src='https://placehold.co/600x700/202020/c6ff00?text=Photo+Unavailable'">
-
+  grid.innerHTML = visible.map(product => `
+    <article class="product-card">
+      <div class="product-image">
+        <img src="images/${product.image}" alt="${product.name}"
+          loading="lazy"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+        <div class="image-fallback" style="display:none">
+          Add photo:<br><strong>${product.image}</strong>
+        </div>
+        ${product.tag ? `<span class="tag">${product.tag}</span>` : ""}
+      </div>
       <div class="product-info">
-        <div class="product-category">${product.cat}</div>
+        <div class="product-category">${product.category}</div>
         <h3>${product.name}</h3>
         <div class="product-bottom">
-          <span class="product-price">€${product.price.toFixed(2)}</span>
-          <button class="add-button" onclick="addToCart(${product.id})">ADD +</button>
+          <span class="price">${euro(product.price)}</span>
+          <button class="add-button" data-add="${product.id}">+ ADD TO BAG</button>
         </div>
       </div>
     </article>
@@ -68,62 +69,95 @@ function renderProducts() {
 }
 
 function addToCart(id) {
-  const item = cart.find(product => product.id === id);
-
-  if (item) {
-    item.qty++;
-  } else {
-    cart.push({id, qty:1});
-  }
-
-  updateCart();
-  toggleCart(true);
+  const found = cart.find(item => item.id === id);
+  if (found) found.quantity++;
+  else cart.push({ id, quantity: 1 });
+  renderCart();
 }
 
-function removeFromCart(id) {
-  cart = cart.filter(item => item.id !== id);
-  updateCart();
+function changeQuantity(id, amount) {
+  const item = cart.find(item => item.id === id);
+  if (!item) return;
+  item.quantity += amount;
+  if (item.quantity <= 0) cart = cart.filter(product => product.id !== id);
+  renderCart();
 }
 
-function updateCart() {
-  document.getElementById("count").textContent =
-    cart.reduce((sum, item) => sum + item.qty, 0);
+function renderCart() {
+  const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const total = cart.reduce((sum, item) => {
+    const product = products.find(p => p.id === item.id);
+    return sum + product.price * item.quantity;
+  }, 0);
 
-  document.getElementById("cartItems").innerHTML = cart.length
-    ? cart.map(item => {
-        const product = products.find(p => p.id === item.id);
+  cartCount.textContent = count;
+  cartTotal.textContent = euro(total);
 
-        return `
-          <div class="cart-item">
-            <img src="${product.img}" alt="${product.name}">
-            <div class="cart-item-details">
-              <strong>${product.name}</strong>
-              <small>Qty: ${item.qty} · €${(product.price * item.qty).toFixed(2)}</small>
-            </div>
-            <button class="remove-button" onclick="removeFromCart(${product.id})">✕</button>
-          </div>
-        `;
-      }).join("")
-    : "<p>Your bag is empty.</p>";
-
-  const total = cart.reduce((sum, item) =>
-    sum + products.find(p => p.id === item.id).price * item.qty, 0);
-
-  document.getElementById("total").textContent = total.toFixed(2);
-}
-
-function toggleCart(open) {
-  document.getElementById("cart").classList.toggle("open", open);
-}
-
-function checkout() {
-  if (!cart.length) {
-    alert("Your bag is empty.");
+  if (cart.length === 0) {
+    cartItems.innerHTML = '<p class="empty-cart">Your bag is empty. Find your next fit.</p>';
     return;
   }
 
-  alert("Demo checkout only. A payment provider is needed for real payments.");
+  cartItems.innerHTML = cart.map(item => {
+    const product = products.find(p => p.id === item.id);
+    return `
+      <div class="cart-item">
+        <img class="cart-thumb" src="images/${product.image}" alt=""
+          onerror="this.style.visibility='hidden'">
+        <div class="cart-item-details">
+          <h3>${product.name}</h3>
+          <p>${euro(product.price)}</p>
+          <div class="quantity-row">
+            <button data-minus="${product.id}">−</button>
+            <span>${item.quantity}</span>
+            <button data-plus="${product.id}">+</button>
+          </div>
+          <button class="remove-button" data-remove="${product.id}">Remove</button>
+        </div>
+      </div>
+    `;
+  }).join("");
 }
 
+function openCart() {
+  cartPanel.classList.add("open");
+  cartOverlay.classList.add("open");
+}
+function closeCart() {
+  cartPanel.classList.remove("open");
+  cartOverlay.classList.remove("open");
+}
+
+document.addEventListener("click", event => {
+  const add = event.target.closest("[data-add]");
+  const plus = event.target.closest("[data-plus]");
+  const minus = event.target.closest("[data-minus]");
+  const remove = event.target.closest("[data-remove]");
+  const filter = event.target.closest("[data-filter]");
+
+  if (add) addToCart(Number(add.dataset.add));
+  if (plus) changeQuantity(Number(plus.dataset.plus), 1);
+  if (minus) changeQuantity(Number(minus.dataset.minus), -1);
+  if (remove) cart = cart.filter(item => item.id !== Number(remove.dataset.remove)), renderCart();
+
+  if (filter) {
+    currentFilter = filter.dataset.filter;
+    document.querySelectorAll(".filter").forEach(button =>
+      button.classList.toggle("active", button === filter)
+    );
+    renderProducts();
+  }
+});
+
+document.getElementById("cart-button").addEventListener("click", openCart);
+document.getElementById("close-cart").addEventListener("click", closeCart);
+cartOverlay.addEventListener("click", closeCart);
+
+document.getElementById("checkout-button").addEventListener("click", () => {
+  alert("This is a demo store. Online payments and checkout have not been connected yet.");
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
 renderProducts();
-updateCart();
+renderCart();
