@@ -1,180 +1,170 @@
  <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Syna Cee | Streetwear</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SYNA CEE | Streetwear</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#0b0b0b;color:white;font-family:Arial,sans-serif}
+header{background:#111;padding:20px 6%;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:5;border-bottom:1px solid #333}
+.logo{font-size:25px;font-weight:900;letter-spacing:3px}
+.logo span{color:#c6ff00}
+nav a{color:white;text-decoration:none;margin:0 10px}
+button{cursor:pointer}
+.cart-btn,.hero a{background:#c6ff00;color:#111;border:0;padding:12px 16px;font-weight:bold;text-decoration:none}
+.hero{padding:80px 7%;min-height:350px;background:linear-gradient(90deg,#050505 15%,#05050599),url('https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=1600&q=80') center/cover}
+.hero h1{font-size:clamp(42px,7vw,75px);margin:15px 0}
+.hero p{max-width:440px;line-height:1.7;color:#ddd;margin-bottom:28px}
+.green{color:#c6ff00;letter-spacing:3px;font-weight:bold}
+main{padding:35px 6%}
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin:25px 0}
+.filters button,.filters input{padding:12px;background:#191919;color:white;border:1px solid #444}
+.filters button.active{background:#c6ff00;color:#111}
+.filters input{min-width:190px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.product{background:#171717;border:1px solid #292929}
+.product img{width:100%;height:250px;object-fit:cover;display:block}
+.info{padding:14px}
+.category{font-size:11px;letter-spacing:2px;color:#c6ff00;text-transform:uppercase}
+.info h3{font-size:15px;min-height:36px}
+.bottom{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.price{font-weight:bold}
+.add{background:transparent;border:1px solid #777;color:white;padding:9px}
+.add:hover{background:#c6ff00;color:#111}
+footer{padding:28px 6%;border-top:1px solid #333;color:#aaa;font-size:13px}
+#cart{display:none;position:fixed;z-index:10;right:0;top:0;width:min(400px,100%);height:100vh;overflow:auto;background:#111;padding:22px;border-left:1px solid #444}
+#cart.open{display:block}
+.cartline{display:flex;gap:12px;border-bottom:1px solid #333;padding:12px 0}
+.cartline img{width:65px;height:70px;object-fit:cover}
+.cartline div{flex:1}
+.cartline small{display:block;color:#aaa;margin-top:8px}
+.close{float:right;background:none;color:white;border:1px solid #777;padding:8px}
+.checkout{width:100%;padding:14px;background:#c6ff00;border:0;font-weight:bold;margin-top:18px}
+.note{font-size:12px;color:#888;line-height:1.6;margin-top:25px}
+@media(max-width:950px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:650px){nav{display:none}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}main{padding:25px 4%}.product img{height:190px}.info{padding:10px}.hero{padding:55px 6%}}
+</style>
 </head>
 <body>
 
-<header class="navbar">
-  <a href="#" class="logo">SYNA CEE®</a>
+<header>
+  <div class="logo">SYNA <span>CEE</span></div>
   <nav>
-    <a href="#home">Home</a>
     <a href="#shop">Shop</a>
-    <a href="#about">About</a>
+    <a href="#shop" onclick="filterProducts('Clothing')">Clothing</a>
+    <a href="#shop" onclick="filterProducts('Shoes')">Shoes</a>
   </nav>
-  <button class="cart-button" onclick="showCart()">
-    🛒 Cart (<span id="cart-count">0</span>)
-  </button>
+  <button class="cart-btn" onclick="toggleCart(true)">BAG (<span id="count">0</span>)</button>
 </header>
 
-<section class="hero" id="home">
-  <p class="tag">NEW COLLECTION — 2026</p>
-  <h1>OWN YOUR<br><span>LANE.</span></h1>
-  <p>Streetwear for those who move differently.</p>
-  <a href="#shop" class="button">SHOP COLLECTION ↗</a>
+<section class="hero">
+  <div class="green">UK STREETWEAR COLLECTION</div>
+  <h1>BUILT FOR<br>THE STREETS.</h1>
+  <p>Hoodies, tracksuits, jackets and sneakers inspired by Central Cee's streetwear style.</p>
+  <a href="#shop">SHOP NOW</a>
 </section>
 
-<section class="shop" id="shop">
-  <p class="tag dark">THE SYNA COLLECTION</p>
-  <h2>Latest Drops<span>.</span></h2>
-  <p class="subtitle">Everyday essentials. Streetwear attitude.</p>
-
-  <div class="products">
-
-    <article class="product">
-      <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=700&q=85" alt="Streetwear hoodie">
-      <div class="product-info">
-        <p class="category">HOODIES</p>
-        <h3>Essential Hoodie</h3>
-        <p class="price">€49.99</p>
-        <button onclick="addToCart('Essential Hoodie',49.99)">ADD TO CART +</button>
-      </div>
-    </article>
-
-    <article class="product">
-      <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=700&q=85" alt="Classic streetwear T-shirt">
-      <div class="product-info">
-        <p class="category">T-SHIRTS</p>
-        <h3>Classic Logo Tee</h3>
-        <p class="price">€24.99</p>
-        <button onclick="addToCart('Classic Logo Tee',24.99)">ADD TO CART +</button>
-      </div>
-    </article>
-
-    <article class="product">
-      <img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=700&q=85" alt="Black baseball cap">
-      <div class="product-info">
-        <p class="category">ACCESSORIES</p>
-        <h3>Urban Cap</h3>
-        <p class="price">€19.99</p>
-        <button onclick="addToCart('Urban Cap',19.99)">ADD TO CART +</button>
-      </div>
-    </article>
-
-    <article class="product">
-      <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=85" alt="Red and white sneakers">
-      <div class="product-info">
-        <p class="category">FOOTWEAR</p>
-        <h3>Street Sneakers</h3>
-        <p class="price">€89.99</p>
-        <button onclick="addToCart('Street Sneakers',89.99)">ADD TO CART +</button>
-      </div>
-    </article>
-
-    <article class="product">
-      <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=700&q=85" alt="Streetwear jacket">
-      <div class="product-info">
-        <p class="category">OUTERWEAR</p>
-        <h3>Urban Jacket</h3>
-        <p class="price">€69.99</p>
-        <button onclick="addToCart('Urban Jacket',69.99)">ADD TO CART +</button>
-      </div>
-    </article>
-
-    <article class="product">
-      <img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=700&q=85" alt="Casual streetwear outfit">
-      <div class="product-info">
-        <p class="category">COLLECTION</p>
-        <h3>Everyday Streetwear</h3>
-        <p class="price">€39.99</p>
-        <button onclick="addToCart('Everyday Streetwear',39.99)">ADD TO CART +</button>
-      </div>
-    </article>
-
+<main id="shop">
+  <h2>OUR PRODUCTS</h2>
+  <p style="color:#aaa">25 streetwear pieces · Clothes and sneakers</p>
+  <div class="filters">
+    <button class="active" onclick="filterProducts('All')">All</button>
+    <button onclick="filterProducts('Clothing')">Clothing</button>
+    <button onclick="filterProducts('Shoes')">Shoes</button>
+    <input id="search" placeholder="Search products..." oninput="render()">
   </div>
-</section>
+  <div class="grid" id="products"></div>
+  <p class="note">Demo shop for a school or personal website project. Prices are illustrative. Products are streetwear-inspired, not claimed to be official SYNA World or Nike merchandise. Replace demo images with photos you have permission to use before selling products.</p>
+</main>
 
-<section class="about" id="about">
-  <p class="tag">OUR MINDSET</p>
-  <h2>MORE THAN<br>JUST CLOTHING.</h2>
-  <p>Built for individuality. Inspired by street culture.<br>
-     Wear your confidence. Own your lane.</p>
-</section>
+<footer>© 2026 SYNA CEE · STREETWEAR</footer>
 
-<section class="checkout" id="checkout">
-  <h2>Your Shopping Cart</h2>
-  <div id="cart-items">Your cart is empty.</div>
-  <h3>Total: <span id="cart-total">€0.00</span></h3>
-  <button class="checkout-button" onclick="checkout()">CONTINUE TO CHECKOUT</button>
-  <p class="note">School project demo — no real payments are taken.</p>
-</section>
-
-<footer>
-  <a href="#" class="logo">SYNA CEE®</a>
-  <p>Streetwear. Lifestyle. Be different.</p>
-  <p>© 2026 Syna Cee. All rights reserved.</p>
-</footer>
+<aside id="cart">
+  <button class="close" onclick="toggleCart(false)">CLOSE ✕</button>
+  <h2>Your Bag</h2>
+  <div id="cartItems"></div>
+  <h3>Total: €<span id="total">0.00</span></h3>
+  <button class="checkout" onclick="checkout()">CHECKOUT</button>
+  <p class="note">Demo checkout only. No real payment is taken.</p>
+</aside>
 
 <script>
-  let cart = [];
+const products = [
+{id:1,name:"Black Logo Hoodie",cat:"Clothing",price:59.99,img:"https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=700&q=80"},
+{id:2,name:"Grey Oversized Hoodie",cat:"Clothing",price:59.99,img:"https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=700&q=80"},
+{id:3,name:"Tech Fleece Zip Hoodie",cat:"Clothing",price:64.99,img:"https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=700&q=80"},
+{id:4,name:"Black Tech Joggers",cat:"Clothing",price:49.99,img:"https://images.unsplash.com/photo-1552902865-b72c031ac5ea?auto=format&fit=crop&w=700&q=80"},
+{id:5,name:"Black & Green Tracksuit",cat:"Clothing",price:89.99,img:"https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=700&q=80"},
+{id:6,name:"Grey Tracksuit",cat:"Clothing",price:89.99,img:"https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=700&q=80"},
+{id:7,name:"Blue Tracksuit",cat:"Clothing",price:89.99,img:"https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=700&q=80"},
+{id:8,name:"Black Graphic T-Shirt",cat:"Clothing",price:29.99,img:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=700&q=80"},
+{id:9,name:"White Essential T-Shirt",cat:"Clothing",price:24.99,img:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=700&q=80"},
+{id:10,name:"Navy Graphic T-Shirt",cat:"Clothing",price:29.99,img:"https://images.unsplash.com/photo-1503341504253-dff4815485f1?auto=format&fit=crop&w=700&q=80"},
+{id:11,name:"Black Puffer Jacket",cat:"Clothing",price:99.99,img:"https://images.unsplash.com/photo-1544923246-77307dd654cb?auto=format&fit=crop&w=700&q=80"},
+{id:12,name:"Blue Puffer Jacket",cat:"Clothing",price:99.99,img:"https://images.unsplash.com/photo-1544923246-77307dd654cb?auto=format&fit=crop&w=700&q=80"},
+{id:13,name:"Black Track Jacket",cat:"Clothing",price:54.99,img:"https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=700&q=80"},
+{id:14,name:"Cargo Pants",cat:"Clothing",price:44.99,img:"https://images.unsplash.com/photo-1517445312882-bc9910d016b7?auto=format&fit=crop&w=700&q=80"},
+{id:15,name:"Charcoal Shorts Set",cat:"Clothing",price:49.99,img:"https://images.unsplash.com/photo-1503341504253-dff4815485f1?auto=format&fit=crop&w=700&q=80"},
+{id:16,name:"Black Skull Cap",cat:"Clothing",price:19.99,img:"https://images.unsplash.com/photo-1576871337622-98d48d1cf531?auto=format&fit=crop&w=700&q=80"},
+{id:17,name:"Grey Beanie",cat:"Clothing",price:17.99,img:"https://images.unsplash.com/photo-1576871337622-98d48d1cf531?auto=format&fit=crop&w=700&q=80"},
+{id:18,name:"Black Streetwear Cap",cat:"Clothing",price:22.99,img:"https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=700&q=80"},
+{id:19,name:"Air Max 95 Style — Black",cat:"Shoes",price:119.99,img:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=80"},
+{id:20,name:"Air Max 95 Style — Grey",cat:"Shoes",price:124.99,img:"https://images.unsplash.com/photo-1495555961986-6d4c1ecb7be3?auto=format&fit=crop&w=700&q=80"},
+{id:21,name:"Air Max Plus Style — Black",cat:"Shoes",price:109.99,img:"https://images.unsplash.com/photo-1460353581641-37baddab0fa2?auto=format&fit=crop&w=700&q=80"},
+{id:22,name:"Air Force Style — White",cat:"Shoes",price:89.99,img:"https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=700&q=80"},
+{id:23,name:"Retro Runner — White/Grey",cat:"Shoes",price:94.99,img:"https://images.unsplash.com/photo-1539185441755-769473a23570?auto=format&fit=crop&w=700&q=80"},
+{id:24,name:"Chunky Sneaker — Cream",cat:"Shoes",price:99.99,img:"https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=700&q=80"},
+{id:25,name:"Everyday Runner — Black/White",cat:"Shoes",price:79.99,img:"https://images.unsplash.com/photo-1495555961986-6d4c1ecb7be3?auto=format&fit=crop&w=700&q=80"}
+];
 
-  function addToCart(name, price) {
-    cart.push({ name, price });
-    updateCart();
-  }
+let activeFilter="All";
+let cart=[];
 
-  function removeItem(index) {
-    cart.splice(index, 1);
-    updateCart();
-  }
-
-  function updateCart() {
-    document.getElementById("cart-count").textContent = cart.length;
-
-    const items = document.getElementById("cart-items");
-
-    if (cart.length === 0) {
-      items.textContent = "Your cart is empty.";
-    } else {
-      items.innerHTML = cart.map((item, index) =>
-        `<div class="cart-item">
-          <span>${item.name} — €${item.price.toFixed(2)}</span>
-          <button onclick="removeItem(${index})">Remove</button>
-        </div>`
-      ).join("");
-    }
-
-    const total = cart.reduce((sum, item) => sum + item.price, 0);
-    document.getElementById("cart-total").textContent =
-      "€" + total.toFixed(2);
-  }
-
-  function showCart() {
-    document.getElementById("checkout").scrollIntoView({
-      behavior: "smooth"
-    });
-  }
-
-  function checkout() {
-    if (cart.length === 0) {
-      alert("Your cart is empty. Add a product first!");
-      return;
-    }
-
-    const total = cart.reduce((sum, item) => sum + item.price, 0);
-
-    alert(
-      "SYNA CEE — DEMO CHECKOUT\n\n" +
-      "Items: " + cart.length + "\n" +
-      "Total: €" + total.toFixed(2) +
-      "\n\nThis is a school project demonstration. " +
-      "No payment has been made."
-    );
-  }
+function filterProducts(category){
+ activeFilter=category;
+ document.querySelectorAll(".filters button").forEach(b=>{
+  b.classList.toggle("active",b.textContent.trim()===(category==="All"?"All":category));
+ });
+ render();
+}
+function render(){
+ const query=document.getElementById("search").value.toLowerCase();
+ const shown=products.filter(p=>(activeFilter==="All"||p.cat===activeFilter)&&p.name.toLowerCase().includes(query));
+ document.getElementById("products").innerHTML=shown.map(p=>`
+ <article class="product">
+  <img src="${p.img}" alt="${p.name}" loading="lazy"
+   onerror="this.onerror=null;this.src='https://placehold.co/600x700/171717/ffffff?text=SYNA+CEE'">
+  <div class="info">
+   <div class="category">${p.cat}</div>
+   <h3>${p.name}</h3>
+   <div class="bottom"><span class="price">€${p.price.toFixed(2)}</span>
+   <button class="add" onclick="add(${p.id})">ADD +</button></div>
+  </div>
+ </article>`).join("");
+}
+function add(id){
+ const item=cart.find(x=>x.id===id);
+ if(item)item.qty++;
+ else cart.push({id,qty:1});
+ updateCart();
+ toggleCart(true);
+}
+function removeItem(id){cart=cart.filter(x=>x.id!==id);updateCart()}
+function updateCart(){
+ document.getElementById("count").textContent=cart.reduce((s,x)=>s+x.qty,0);
+ document.getElementById("cartItems").innerHTML=cart.length?cart.map(x=>{
+  const p=products.find(y=>y.id===x.id);
+  return `<div class="cartline"><img src="${p.img}" alt=""><div><strong>${p.name}</strong><small>Qty: ${x.qty} · €${(p.price*x.qty).toFixed(2)}</small></div><button onclick="removeItem(${p.id})">✕</button></div>`;
+ }).join(""):"<p>Your bag is empty.</p>";
+ document.getElementById("total").textContent=cart.reduce((s,x)=>s+products.find(p=>p.id===x.id).price*x.qty,0).toFixed(2);
+}
+function toggleCart(open){document.getElementById("cart").classList.toggle("open",open)}
+function checkout(){
+ if(!cart.length){alert("Your bag is empty.");return}
+ alert("This is a demo checkout. Real payments need a secure payment provider and backend.");
+}
+render();updateCart();
 </script>
-
 </body>
 </html>
