@@ -24,45 +24,40 @@
 </header>
 
 <section class="hero">
-  <div class="hero-content">
+  <div>
     <p class="eyebrow">STREETWEAR COLLECTION</p>
     <h1>BUILT FOR<br>THE STREETS.</h1>
     <p class="hero-description">
-      Hoodies, tracksuits, jackets and sneakers inspired by UK streetwear
-      and Central Cee's style.
+      Hoodies, tracksuits, jackets and sneakers inspired by Central Cee's style.
     </p>
     <a href="#shop" class="shop-button">SHOP NOW</a>
   </div>
 </section>
 
 <main id="shop">
-  <section class="collection-heading">
+  <div class="collection-heading">
     <p class="eyebrow">THE LATEST DROP</p>
     <h2>OUR COLLECTION</h2>
     <p>25 products · Clothing and sneakers</p>
-  </section>
+  </div>
 
   <div class="filters">
-    <button class="filter active" data-filter="All"
-      onclick="setFilter('All')">All Products</button>
-    <button class="filter" data-filter="Clothing"
-      onclick="setFilter('Clothing')">Clothing</button>
-    <button class="filter" data-filter="Shoes"
-      onclick="setFilter('Shoes')">Shoes</button>
-    <input id="search" type="search"
-      placeholder="Search products..." oninput="renderProducts()">
+    <button class="filter active" data-filter="All" onclick="setFilter('All')">All Products</button>
+    <button class="filter" data-filter="Clothing" onclick="setFilter('Clothing')">Clothing</button>
+    <button class="filter" data-filter="Shoes" onclick="setFilter('Shoes')">Shoes</button>
+    <input id="search" type="search" placeholder="Search products..." oninput="renderProducts()">
   </div>
 
   <div class="product-grid" id="products"></div>
 
   <p class="disclaimer">
-    Demo store. Prices are illustrative. Product images must be uploaded
-    into the images folder. This is not an official SYNA World or Nike store.
+    Example store. Prices are illustrative. Product photos may not show the exact named model.
+    This is not an official SYNA World or Nike store.
   </p>
 </main>
 
 <footer>
-  <div class="logo">SYNA <span>CEE</span></div>
+  <a href="#" class="logo">SYNA <span>CEE</span></a>
   <p>Streetwear culture. Everyday style.</p>
   <p>© 2026 SYNA CEE</p>
 </footer>
@@ -70,7 +65,7 @@
 <aside id="cart" class="cart-panel">
   <div class="cart-heading">
     <h2>Your Bag</h2>
-    <button class="close-button" onclick="toggleCart(false)">✕</button>
+    <button class="close-button" onclick="toggleCart(false)">CLOSE ✕</button>
   </div>
 
   <div id="cartItems"></div>
@@ -80,11 +75,8 @@
     <strong>€<span id="total">0.00</span></strong>
   </div>
 
-  <button class="checkout-button" onclick="checkout()">
-    CHECKOUT
-  </button>
-
-  <p class="disclaimer">Demo checkout. No real payment is processed.</p>
+  <button class="checkout-button" onclick="checkout()">CHECKOUT</button>
+  <p class="disclaimer">Demo checkout only. No real payment is processed.</p>
 </aside>
 
 </body>
