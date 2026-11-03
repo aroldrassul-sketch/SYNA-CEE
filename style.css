@@ -1,177 +1,146 @@
- const products = [
-  {
-    id: 1,
-    name: "SYNA World Hoodie — Black",
-    category: "clothing",
-    price: 90,
-    image: "images/syna-hoodie-black.webp",
-    tag: "SYNA COLLECTION"
-  },
-  {
-    id: 2,
-    name: "SYNA World Hoodie — Yellow",
-    category: "clothing",
-    price: 90,
-    image: "images/syna-hoodie-yellow.webp",
-    tag: "NEW DROP"
-  }
-];
-
-const grid = document.getElementById("product-grid");
-const cartPanel = document.getElementById("cart-panel");
-const cartOverlay = document.getElementById("cart-overlay");
-const cartCount = document.getElementById("cart-count");
-const cartItems = document.getElementById("cart-items");
-const cartTotal = document.getElementById("cart-total");
-
-let cart = [];
-let currentFilter = "all";
-
-function money(value) {
-  return new Intl.NumberFormat("en-IE", {
-    style: "currency",
-    currency: "EUR"
-  }).format(value);
+/* SYNA CEE - BLACK & PINK THEME */
+:root {
+  --bg: #080808;
+  --panel: #151015;
+  --text: #ffffff;
+  --muted: #b6a9b2;
+  --line: #38202f;
+  --accent: #ff4fa3;
 }
 
-function renderProducts() {
-  const visible = products.filter(product =>
-    currentFilter === "all" || product.category === currentFilter
-  );
-
-  grid.innerHTML = visible.map(product => `
-    <article class="product-card">
-      <div class="product-image">
-        <img src="${product.image}" alt="${product.name}"
-             onerror="this.alt='Photo not found'">
-        <span class="tag">${product.tag}</span>
-      </div>
-
-      <div class="product-info">
-        <div class="product-category">SYNA WORLD</div>
-        <h3>${product.name}</h3>
-
-        <div class="product-bottom">
-          <span class="price">${money(product.price)}</span>
-          <button class="add-button" data-add="${product.id}">
-            + ADD TO BAG
-          </button>
-        </div>
-      </div>
-    </article>
-  `).join("");
+body {
+  background: #080808;
+  color: white;
 }
 
-function renderCart() {
-  const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-  cartCount.textContent = count;
-
-  const total = cart.reduce((sum, item) => {
-    const product = products.find(p => p.id === item.id);
-    return sum + product.price * item.quantity;
-  }, 0);
-
-  cartTotal.textContent = money(total);
-
-  if (cart.length === 0) {
-    cartItems.innerHTML =
-      '<p class="empty-cart">Your bag is empty.</p>';
-    return;
-  }
-
-  cartItems.innerHTML = cart.map(item => {
-    const product = products.find(p => p.id === item.id);
-
-    return `
-      <div class="cart-item">
-        <img class="cart-thumb" src="${product.image}" alt="">
-        <div class="cart-item-details">
-          <h3>${product.name}</h3>
-          <p>${money(product.price)}</p>
-
-          <div class="quantity-row">
-            <button data-minus="${product.id}">−</button>
-            <span>${item.quantity}</span>
-            <button data-plus="${product.id}">+</button>
-          </div>
-
-          <button class="remove-button"
-                  data-remove="${product.id}">
-            Remove
-          </button>
-        </div>
-      </div>
-    `;
-  }).join("");
+.navbar {
+  background: rgba(8, 8, 8, 0.97);
+  border-bottom: 1px solid #38202f;
 }
 
-function addToCart(id) {
-  const item = cart.find(i => i.id === id);
-
-  if (item) {
-    item.quantity++;
-  } else {
-    cart.push({ id, quantity: 1 });
-  }
-
-  renderCart();
+.logo span,
+#cart-count,
+.eyebrow {
+  color: #ff4fa3;
 }
 
-function changeQuantity(id, amount) {
-  const item = cart.find(i => i.id === id);
-  if (!item) return;
-
-  item.quantity += amount;
-  cart = cart.filter(i => i.quantity > 0);
-  renderCart();
+.cart-button {
+  border-color: #ff4fa3;
+  color: white;
 }
 
-document.addEventListener("click", event => {
-  const add = event.target.closest("[data-add]");
-  const plus = event.target.closest("[data-plus]");
-  const minus = event.target.closest("[data-minus]");
-  const remove = event.target.closest("[data-remove]");
-  const filter = event.target.closest("[data-filter]");
-
-  if (add) addToCart(Number(add.dataset.add));
-  if (plus) changeQuantity(Number(plus.dataset.plus), 1);
-  if (minus) changeQuantity(Number(minus.dataset.minus), -1);
-
-  if (remove) {
-    cart = cart.filter(i => i.id !== Number(remove.dataset.remove));
-    renderCart();
-  }
-
-  if (filter) {
-    currentFilter = filter.dataset.filter;
-
-    document.querySelectorAll(".filter").forEach(button => {
-      button.classList.toggle("active", button === filter);
-    });
-
-    renderProducts();
-  }
-});
-
-function openCart() {
-  cartPanel.classList.add("open");
-  cartOverlay.classList.add("open");
+.cart-button:hover {
+  background: #ff4fa3;
+  color: black;
 }
 
-function closeCart() {
-  cartPanel.classList.remove("open");
-  cartOverlay.classList.remove("open");
+.hero-image {
+  background: linear-gradient(135deg, #21101c, #080808);
+  border: 1px solid #38202f;
 }
 
-document.getElementById("cart-button").addEventListener("click", openCart);
-document.getElementById("close-cart").addEventListener("click", closeCart);
-cartOverlay.addEventListener("click", closeCart);
+.shop-button {
+  background: #ff4fa3;
+  color: #080808;
+  border-radius: 3px;
+}
 
-document.getElementById("checkout-button").addEventListener("click", () => {
-  alert("This is a demo store. Payments are not connected yet.");
-});
+.shop-button:hover {
+  background: #ff8bc2;
+}
 
-document.getElementById("year").textContent = new Date().getFullYear();
+.ticker {
+  background: #ff4fa3;
+  color: #080808;
+}
 
-renderProducts();
-renderCart();
+.filter {
+  border-color: #533044;
+  color: white;
+  border-radius: 3px;
+}
+
+.filter.active,
+.filter:hover {
+  background: #ff4fa3;
+  border-color: #ff4fa3;
+  color: #080808;
+}
+
+.product-image {
+  background: #171117;
+  border: 1px solid #38202f;
+  border-radius: 4px;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.product-card {
+  transition: transform 0.25s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+.product-info h3 {
+  color: white;
+}
+
+.product-category {
+  color: #ff79b6;
+}
+
+.price {
+  color: #ff70b1;
+}
+
+.add-button {
+  color: #ff70b1;
+  border-color: #ff4fa3;
+}
+
+.add-button:hover {
+  background: #ff4fa3;
+  color: black;
+}
+
+.tag {
+  background: #ff4fa3;
+  color: black;
+}
+
+.feature {
+  background: #170e15;
+  border-top: 1px solid #38202f;
+  border-bottom: 1px solid #38202f;
+}
+
+.cart-panel {
+  background: #120d12;
+  border-left: 1px solid #ff4fa3;
+}
+
+.cart-heading {
+  border-bottom-color: #38202f;
+}
+
+.cart-item {
+  border-bottom-color: #38202f;
+}
+
+.quantity-row button {
+  border-color: #ff4fa3;
+}
+
+footer {
+  background: #080808;
+  border-top: 1px solid #38202f;
+}
