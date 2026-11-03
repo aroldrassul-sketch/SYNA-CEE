@@ -1,150 +1,177 @@
- @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
-:root {
-  --bg: #101010;
-  --panel: #191919;
-  --text: #f6f6f2;
-  --muted: #9a9a96;
-  --line: #303030;
-  --accent: #d9ff43;
-}
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font-family: Inter, Arial, sans-serif;
-}
-a { color: inherit; text-decoration: none; }
-button { font: inherit; cursor: pointer; }
-.navbar {
-  height: 76px; padding: 0 6%;
-  display: flex; align-items: center; justify-content: space-between;
-  border-bottom: 1px solid var(--line); gap: 24px;
-  position: sticky; top: 0; z-index: 5;
-  background: rgba(16,16,16,.96); backdrop-filter: blur(12px);
-}
-.logo { font-size: 24px; font-weight: 900; letter-spacing: -1.5px; }
-.logo span { color: var(--accent); }
-nav { display: flex; gap: 26px; font-size: 12px; font-weight: 700; }
-nav a:hover, footer a:hover { color: var(--accent); }
-.cart-button {
-  border: 1px solid #555; color: white; background: transparent;
-  padding: 11px 15px; font-size: 11px; font-weight: 800;
-}
-#cart-count { color: var(--accent); }
+ const products = [
+  {
+    id: 1,
+    name: "SYNA World Hoodie — Black",
+    category: "clothing",
+    price: 90,
+    image: "images/syna-hoodie-black.webp",
+    tag: "SYNA COLLECTION"
+  },
+  {
+    id: 2,
+    name: "SYNA World Hoodie — Yellow",
+    category: "clothing",
+    price: 90,
+    image: "images/syna-hoodie-yellow.webp",
+    tag: "NEW DROP"
+  }
+];
 
-.hero {
-  padding: 58px 6% 68px; min-height: 500px;
-  display: grid; grid-template-columns: 1fr 1fr;
-  align-items: center; gap: 35px;
+const grid = document.getElementById("product-grid");
+const cartPanel = document.getElementById("cart-panel");
+const cartOverlay = document.getElementById("cart-overlay");
+const cartCount = document.getElementById("cart-count");
+const cartItems = document.getElementById("cart-items");
+const cartTotal = document.getElementById("cart-total");
+
+let cart = [];
+let currentFilter = "all";
+
+function money(value) {
+  return new Intl.NumberFormat("en-IE", {
+    style: "currency",
+    currency: "EUR"
+  }).format(value);
 }
-.eyebrow { color: var(--accent); font-size: 10px; font-weight: 800; letter-spacing: 2px; }
-.hero h1 { font-size: clamp(48px, 7vw, 92px); line-height: .91; letter-spacing: -5px; margin: 20px 0; }
-.hero-content > p:not(.eyebrow) { color: var(--muted); line-height: 1.7; }
-.shop-button {
-  display: inline-block; border: 0; background: var(--accent); color: #111;
-  padding: 15px 21px; margin-top: 20px; font-size: 11px; font-weight: 900;
+
+function renderProducts() {
+  const visible = products.filter(product =>
+    currentFilter === "all" || product.category === currentFilter
+  );
+
+  grid.innerHTML = visible.map(product => `
+    <article class="product-card">
+      <div class="product-image">
+        <img src="${product.image}" alt="${product.name}"
+             onerror="this.alt='Photo not found'">
+        <span class="tag">${product.tag}</span>
+      </div>
+
+      <div class="product-info">
+        <div class="product-category">SYNA WORLD</div>
+        <h3>${product.name}</h3>
+
+        <div class="product-bottom">
+          <span class="price">${money(product.price)}</span>
+          <button class="add-button" data-add="${product.id}">
+            + ADD TO BAG
+          </button>
+        </div>
+      </div>
+    </article>
+  `).join("");
 }
-.shop-button:hover { background: white; }
-.hero-image {
-  height: 390px; background: #242424; position: relative;
-  display: grid; place-items: center; overflow: hidden;
+
+function renderCart() {
+  const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+  cartCount.textContent = count;
+
+  const total = cart.reduce((sum, item) => {
+    const product = products.find(p => p.id === item.id);
+    return sum + product.price * item.quantity;
+  }, 0);
+
+  cartTotal.textContent = money(total);
+
+  if (cart.length === 0) {
+    cartItems.innerHTML =
+      '<p class="empty-cart">Your bag is empty.</p>';
+    return;
+  }
+
+  cartItems.innerHTML = cart.map(item => {
+    const product = products.find(p => p.id === item.id);
+
+    return `
+      <div class="cart-item">
+        <img class="cart-thumb" src="${product.image}" alt="">
+        <div class="cart-item-details">
+          <h3>${product.name}</h3>
+          <p>${money(product.price)}</p>
+
+          <div class="quantity-row">
+            <button data-minus="${product.id}">−</button>
+            <span>${item.quantity}</span>
+            <button data-plus="${product.id}">+</button>
+          </div>
+
+          <button class="remove-button"
+                  data-remove="${product.id}">
+            Remove
+          </button>
+        </div>
+      </div>
+    `;
+  }).join("");
 }
-.hero-image img { width: 100%; height: 100%; object-fit: cover; position: absolute; }
-.hero-fallback { font-size: 44px; font-weight: 900; text-align: center; letter-spacing: -2px; }
-.hero-fallback span { font-size: 10px; color: var(--accent); letter-spacing: 4px; }
-.ticker {
-  display: flex; justify-content: space-around; align-items: center; gap: 15px;
-  flex-wrap: wrap; padding: 19px 5%; background: var(--accent); color: #111;
-  font-size: 10px; font-weight: 900; letter-spacing: 1.5px;
+
+function addToCart(id) {
+  const item = cart.find(i => i.id === id);
+
+  if (item) {
+    item.quantity++;
+  } else {
+    cart.push({ id, quantity: 1 });
+  }
+
+  renderCart();
 }
-.section { padding: 72px 6%; }
-.section-heading { display: flex; justify-content: space-between; align-items: end; gap: 20px; }
-h2 { font-size: clamp(28px, 4vw, 43px); letter-spacing: -1.8px; margin: 10px 0 0; }
-.muted { color: var(--muted); font-size: 12px; }
-.filters { display: flex; flex-wrap: wrap; gap: 9px; margin: 30px 0; }
-.filter {
-  background: transparent; border: 1px solid var(--line); color: #ddd;
-  padding: 10px 15px; font-size: 10px; font-weight: 800;
+
+function changeQuantity(id, amount) {
+  const item = cart.find(i => i.id === id);
+  if (!item) return;
+
+  item.quantity += amount;
+  cart = cart.filter(i => i.quantity > 0);
+  renderCart();
 }
-.filter.active, .filter:hover { background: var(--accent); color: #111; border-color: var(--accent); }
-.product-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px 14px; }
-.product-card { min-width: 0; }
-.product-image {
-  aspect-ratio: 4 / 5; position: relative; overflow: hidden;
-  background: #202020; display: grid; place-items: center;
+
+document.addEventListener("click", event => {
+  const add = event.target.closest("[data-add]");
+  const plus = event.target.closest("[data-plus]");
+  const minus = event.target.closest("[data-minus]");
+  const remove = event.target.closest("[data-remove]");
+  const filter = event.target.closest("[data-filter]");
+
+  if (add) addToCart(Number(add.dataset.add));
+  if (plus) changeQuantity(Number(plus.dataset.plus), 1);
+  if (minus) changeQuantity(Number(minus.dataset.minus), -1);
+
+  if (remove) {
+    cart = cart.filter(i => i.id !== Number(remove.dataset.remove));
+    renderCart();
+  }
+
+  if (filter) {
+    currentFilter = filter.dataset.filter;
+
+    document.querySelectorAll(".filter").forEach(button => {
+      button.classList.toggle("active", button === filter);
+    });
+
+    renderProducts();
+  }
+});
+
+function openCart() {
+  cartPanel.classList.add("open");
+  cartOverlay.classList.add("open");
 }
-.product-image img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
-.product-card:hover .product-image img { transform: scale(1.045); }
-.image-fallback { padding: 20px; text-align: center; font-size: 12px; color: #aaa; }
-.tag {
-  position: absolute; top: 10px; left: 10px; background: var(--accent); color: #111;
-  padding: 6px 8px; font-size: 9px; font-weight: 900;
+
+function closeCart() {
+  cartPanel.classList.remove("open");
+  cartOverlay.classList.remove("open");
 }
-.product-info { padding: 13px 2px; }
-.product-category { color: var(--muted); font-size: 9px; letter-spacing: 1px; text-transform: uppercase; }
-.product-info h3 { font-size: 13px; line-height: 1.5; margin: 7px 0; }
-.product-bottom { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
-.price { font-size: 13px; font-weight: 800; }
-.add-button {
-  background: transparent; color: var(--accent); border: 1px solid #505050;
-  padding: 8px 10px; font-size: 10px; font-weight: 800;
-}
-.add-button:hover { color: #111; background: var(--accent); border-color: var(--accent); }
-.feature {
-  padding: 48px 6%; background: #202020; display: flex;
-  justify-content: space-between; align-items: center; gap: 30px;
-}
-.feature p:last-child { max-width: 360px; color: var(--muted); line-height: 1.8; font-size: 13px; }
-footer {
-  padding: 35px 6%; display: flex; align-items: center;
-  justify-content: space-between; gap: 20px; flex-wrap: wrap;
-  border-top: 1px solid var(--line);
-}
-footer p { color: var(--muted); font-size: 10px; max-width: 350px; line-height: 1.6; }
-.cart-overlay {
-  position: fixed; inset: 0; background: #0009; z-index: 9; display: none;
-}
-.cart-overlay.open { display: block; }
-.cart-panel {
-  position: fixed; right: -440px; top: 0; height: 100dvh; width: min(420px, 100%);
-  background: #171717; z-index: 10; padding: 24px; transition: right .25s;
-  display: flex; flex-direction: column;
-}
-.cart-panel.open { right: 0; }
-.cart-heading, .cart-total { display: flex; align-items: center; justify-content: space-between; }
-.cart-heading { border-bottom: 1px solid var(--line); padding-bottom: 16px; }
-.cart-heading h2 { font-size: 25px; }
-#close-cart { border: 0; background: transparent; color: white; font-size: 22px; }
-#cart-items { overflow-y: auto; flex: 1; }
-.cart-item { display: flex; gap: 12px; padding: 16px 0; border-bottom: 1px solid var(--line); }
-.cart-thumb { width: 70px; height: 85px; object-fit: cover; background: #292929; }
-.cart-item-details { flex: 1; }
-.cart-item-details h3 { font-size: 12px; margin: 3px 0 8px; }
-.cart-item-details p { color: var(--muted); font-size: 12px; }
-.quantity-row { display: flex; align-items: center; gap: 12px; }
-.quantity-row button { background: transparent; border: 1px solid #555; color: white; padding: 4px 9px; }
-.remove-button { color: var(--muted); background: none; border: 0; font-size: 11px; margin-top: 8px; }
-.cart-footer { padding-top: 18px; border-top: 1px solid var(--line); }
-.full-width { width: 100%; text-align: center; }
-.empty-cart { color: var(--muted); font-size: 13px; padding: 25px 0; }
-@media (max-width: 900px) {
-  .product-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  nav { gap: 13px; }
-}
-@media (max-width: 620px) {
-  .navbar { padding: 0 4%; height: 65px; gap: 10px; }
-  .logo { font-size: 20px; }
-  nav { display: none; }
-  .hero { padding: 42px 5%; grid-template-columns: 1fr; }
-  .hero h1 { letter-spacing: -3px; }
-  .hero-image { height: 280px; }
-  .section { padding: 48px 5%; }
-  .section-heading { align-items: start; flex-direction: column; }
-  .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 10px; }
-  .product-info h3 { font-size: 12px; }
-  .product-bottom { align-items: start; flex-direction: column; }
-  .feature { align-items: start; flex-direction: column; padding: 35px 5%; }
-  footer { padding: 28px 5%; }
-}
+
+document.getElementById("cart-button").addEventListener("click", openCart);
+document.getElementById("close-cart").addEventListener("click", closeCart);
+cartOverlay.addEventListener("click", closeCart);
+
+document.getElementById("checkout-button").addEventListener("click", () => {
+  alert("This is a demo store. Payments are not connected yet.");
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+renderProducts();
+renderCart();
