@@ -1,41 +1,41 @@
- const products = [
+const products = [
   // --- 8 HOODIES ---
-  { id: 1, name: "SYNA World Hoodie — Black", category: "clothing", price: 90, image: "images/syna-hoodie-black.webp", tag: "SYNA COLLECTION" },
-  { id: 2, name: "SYNA World Hoodie — Yellow", category: "clothing", price: 90, image: "images/syna-hoodie-yellow.webp", tag: "NEW DROP" },
-  { id: 3, name: "SYNA World Hoodie — Grey Marl", category: "clothing", price: 90, image: "images/syna-hoodie-grey.webp", tag: "BESTSELLER" },
-  { id: 4, name: "SYNA World Hoodie — Olive Green", category: "clothing", price: 95, image: "images/syna-hoodie-olive.webp", tag: "LIMITED" },
-  { id: 5, name: "SYNA World Hoodie — Baby Blue", category: "clothing", price: 90, image: "images/syna-hoodie-blue.webp", tag: "SYNA COLLECTION" },
-  { id: 6, name: "SYNA World Hoodie — Red Edition", category: "clothing", price: 95, image: "images/syna-hoodie-red.webp", tag: "HOT DROP" },
-  { id: 7, name: "SYNA World Hoodie — Off White", category: "clothing", price: 90, image: "images/syna-hoodie-white.webp", tag: "ESSENTIAL" },
-  { id: 8, name: "SYNA World Zip Hoodie — Charcoal", category: "clothing", price: 100, image: "images/syna-ziphoodie-charcoal.webp", tag: "NEW" },
+  { id: 1, name: "SYNA World Hoodie — Black", category: "clothing", price: 90, image: "syna-hoodie-black.jpg", tag: "SYNA COLLECTION" },
+  { id: 2, name: "SYNA World Hoodie — Yellow", category: "clothing", price: 90, image: "syna-hoodie-yellow.jpg", tag: "NEW DROP" },
+  { id: 3, name: "SYNA World Hoodie — Grey Marl", category: "clothing", price: 90, image: "syna-hoodie-grey.jpg", tag: "BESTSELLER" },
+  { id: 4, name: "SYNA World Hoodie — Olive Green", category: "clothing", price: 95, image: "syna-hoodie-olive.jpg", tag: "LIMITED" },
+  { id: 5, name: "SYNA World Hoodie — Baby Blue", category: "clothing", price: 90, image: "syna-hoodie-blue.jpg", tag: "SYNA COLLECTION" },
+  { id: 6, name: "SYNA World Hoodie — Red Edition", category: "clothing", price: 95, image: "syna-hoodie-red.jpg", tag: "HOT DROP" },
+  { id: 7, name: "SYNA World Hoodie — Off White", category: "clothing", price: 90, image: "syna-hoodie-white.jpg", tag: "ESSENTIAL" },
+  { id: 8, name: "SYNA World Zip Hoodie — Charcoal", category: "clothing", price: 100, image: "syna-ziphoodie-charcoal.jpg", tag: "NEW" },
 
   // --- 8 T-SHIRTS ---
-  { id: 9, name: "SYNA Graphic Tee — Black/Pink", category: "clothing", price: 45, image: "images/syna-tee-black.webp", tag: "POPULAR" },
-  { id: 10, name: "SYNA Signature Tee — White", category: "clothing", price: 45, image: "images/syna-tee-white.webp", tag: "ESSENTIAL" },
-  { id: 11, name: "SYNA World Logo Tee — Grey", category: "clothing", price: 45, image: "images/syna-tee-grey.webp", tag: "SYNA COLLECTION" },
-  { id: 12, name: "SYNA Box Logo Tee — Olive", category: "clothing", price: 50, image: "images/syna-tee-olive.webp", tag: "LIMITED" },
-  { id: 13, name: "SYNA Vintage Wash Tee — Brown", category: "clothing", price: 55, image: "images/syna-tee-brown.webp", tag: "VINTAGE EDIT" },
-  { id: 14, name: "SYNA Street Tee — Navy", category: "clothing", price: 45, image: "images/syna-tee-navy.webp", tag: "NEW DROP" },
-  { id: 15, name: "SYNA CEE Core Tee — Pink", category: "clothing", price: 45, image: "images/syna-tee-pink.webp", tag: "EXCLUSIVE" },
-  { id: 16, name: "SYNA Statement Tee — Washed Black", category: "clothing", price: 50, image: "images/syna-tee-washedblack.webp", tag: "BESTSELLER" },
+  { id: 9, name: "SYNA Graphic Tee — Black/Pink", category: "clothing", price: 45, image: "syna-tee-black.jpg", tag: "POPULAR" },
+  { id: 10, name: "SYNA Signature Tee — White", category: "clothing", price: 45, image: "syna-tee-white.jpg", tag: "ESSENTIAL" },
+  { id: 11, name: "SYNA World Logo Tee — Grey", category: "clothing", price: 45, image: "syna-tee-grey.jpg", tag: "SYNA COLLECTION" },
+  { id: 12, name: "SYNA Box Logo Tee — Olive", category: "clothing", price: 50, image: "syna-tee-olive.jpg", tag: "LIMITED" },
+  { id: 13, name: "SYNA Vintage Wash Tee — Brown", category: "clothing", price: 55, image: "syna-tee-brown.jpg", tag: "VINTAGE EDIT" },
+  { id: 14, name: "SYNA Street Tee — Navy", category: "clothing", price: 45, image: "syna-tee-navy.jpg", tag: "NEW DROP" },
+  { id: 15, name: "SYNA CEE Core Tee — Pink", category: "clothing", price: 45, image: "syna-tee-pink.jpg", tag: "EXCLUSIVE" },
+  { id: 16, name: "SYNA Statement Tee — Washed Black", category: "clothing", price: 50, image: "syna-tee-washedblack.jpg", tag: "BESTSELLER" },
 
   // --- 4 TRACKSUITS / JOGGERS ---
-  { id: 17, name: "SYNA Tech Tracksuit — Black", category: "tracksuits", price: 160, image: "images/syna-tracksuit-black.webp", tag: "SET" },
-  { id: 18, name: "SYNA Fleece Joggers — Grey", category: "tracksuits", price: 75, image: "images/syna-joggers-grey.webp", tag: "ESSENTIAL" },
-  { id: 19, name: "SYNA World Tracksuit — Navy", category: "tracksuits", price: 160, image: "images/syna-tracksuit-navy.webp", tag: "SET" },
-  { id: 20, name: "SYNA Cargo Joggers — Olive", category: "tracksuits", price: 85, image: "images/syna-joggers-olive.webp", tag: "NEW" },
+  { id: 17, name: "SYNA Tech Tracksuit — Black", category: "tracksuits", price: 160, image: "syna-tracksuit-black.jpg", tag: "SET" },
+  { id: 18, name: "SYNA Fleece Joggers — Grey", category: "tracksuits", price: 75, image: "syna-joggers-grey.jpg", tag: "ESSENTIAL" },
+  { id: 19, name: "SYNA World Tracksuit — Navy", category: "tracksuits", price: 160, image: "syna-tracksuit-navy.jpg", tag: "SET" },
+  { id: 20, name: "SYNA Cargo Joggers — Olive", category: "tracksuits", price: 85, image: "syna-joggers-olive.jpg", tag: "NEW" },
 
   // --- 4 SNEAKERS ---
-  { id: 21, name: "SYNA Street Runner — Triple Black", category: "sneakers", price: 140, image: "images/syna-sneaker-black.webp", tag: "FOOTWEAR" },
-  { id: 22, name: "SYNA Court Low — White/Pink", category: "sneakers", price: 130, image: "images/syna-sneaker-whitepink.webp", tag: "HOT DROP" },
-  { id: 23, name: "SYNA Runner — Grey/Silver", category: "sneakers", price: 145, image: "images/syna-sneaker-grey.webp", tag: "POPULAR" },
-  { id: 24, name: "SYNA High Top — Neon Accent", category: "sneakers", price: 155, image: "images/syna-sneaker-hightop.webp", tag: "LIMITED" },
+  { id: 21, name: "SYNA Street Runner — Triple Black", category: "sneakers", price: 140, image: "syna-sneaker-black.jpg", tag: "FOOTWEAR" },
+  { id: 22, name: "SYNA Court Low — White/Pink", category: "sneakers", price: 130, image: "syna-sneaker-whitepink.jpg", tag: "HOT DROP" },
+  { id: 23, name: "SYNA Runner — Grey/Silver", category: "sneakers", price: 145, image: "syna-sneaker-grey.jpg", tag: "POPULAR" },
+  { id: 24, name: "SYNA High Top — Neon Accent", category: "sneakers", price: 155, image: "syna-sneaker-hightop.jpg", tag: "LIMITED" },
 
   // --- 4 ACCESSORIES ---
-  { id: 25, name: "SYNA World Crossbody Bag — Black", category: "accessories", price: 40, image: "images/syna-bag-black.webp", tag: "ESSENTIAL" },
-  { id: 26, name: "SYNA Structured Cap — Pink/Black", category: "accessories", price: 30, image: "images/syna-cap-pink.webp", tag: "HEADWEAR" },
-  { id: 27, name: "SYNA Heavyweight Socks (3-Pack)", category: "accessories", price: 20, image: "images/syna-socks.webp", tag: "PACK" },
-  { id: 28, name: "SYNA World Balaclava — Black", category: "accessories", price: 35, image: "images/syna-balaclava.webp", tag: "NEW DROP" }
+  { id: 25, name: "SYNA World Crossbody Bag — Black", category: "accessories", price: 40, image: "syna-bag-black.jpg", tag: "ESSENTIAL" },
+  { id: 26, name: "SYNA Structured Cap — Pink/Black", category: "accessories", price: 30, image: "syna-cap-pink.jpg", tag: "HEADWEAR" },
+  { id: 27, name: "SYNA Heavyweight Socks (3-Pack)", category: "accessories", price: 20, image: "syna-socks.jpg", tag: "PACK" },
+  { id: 28, name: "SYNA World Balaclava — Black", category: "accessories", price: 35, image: "syna-balaclava.jpg", tag: "NEW DROP" }
 ];
 
 const grid = document.getElementById("product-grid");
